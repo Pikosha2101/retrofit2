@@ -10,7 +10,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +22,7 @@ class MainActivity : AppCompatActivity() {
             .baseUrl("https://dummyjson.com")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-        val productApi = retrofit.create(jsonAPI::class.java)
+        val productApi = retrofit.create(JsonAPI::class.java)
         bt.setOnClickListener {
             CoroutineScope(Dispatchers.IO).launch {
                 val id = et.text.toString().toInt()
